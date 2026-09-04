@@ -35,7 +35,8 @@ The Event History page may display information such as:
 4.Event Source
 5.Resource Type
 6.Resource Name
-Screenshot 2: CloudTrail Event History
+
+## Screenshot 2: CloudTrail Event History
 <img width="1920" height="1020" alt="Screenshot 2026-09-03 161219" src="https://github.com/user-attachments/assets/7d9266dc-8434-4db4-90b6-f8547fa3302c" />
 ## PART B — ANALYZE A CLOUDTRAIL EVENT
 ## Step 3: Select an Event
@@ -49,7 +50,50 @@ The CreateKeyPair event indicates that an Amazon EC2 bucket creation operation o
 
 ## CreateKeyPair Event Observation
 ## Meaning of Important Fields
-Screenshot 3: CreateKeyPair Event Details
+<table border="1">
+  <tr>
+    <th>Field</th>
+    <th>Meaning / Observation</th>
+  </tr>
+
+  <tr>
+    <td>Event Time</td>
+    <td>August 05, 2026, 11:09:16 (UTC+05:30) — Time at which the activity occurred</td>
+  </tr>
+
+  <tr>
+    <td>User Name</td>
+    <td>root — User/identity associated with the activity</td>
+  </tr>
+
+  <tr>
+    <td>Event Name</td>
+    <td>CreateKeyPair — AWS operation that was performed</td>
+  </tr>
+
+  <tr>
+    <td>Event Source</td>
+    <td>CreateKeyPair — AWS service that generated the event</td>
+  </tr>
+
+  <tr>
+    <td>AWS Region</td>
+    <td>ap-south-1 — Region where the activity occurred</td>
+  </tr>
+
+  <tr>
+    <td>Read-only</td>
+    <td>false — The event involved a change/creation operation</td>
+  </tr>
+
+  <tr>
+    <td>Error Code</td>
+    <td>- — No error code was reported</td>
+  </tr>
+</table>
+
+
+## Screenshot 3: CreateKeyPair Event Details
 <img width="1920" height="1020" alt="Screenshot 2026-09-03 161636" src="https://github.com/user-attachments/assets/5600c39c-6bdd-41ce-b480-e31ff8d08828" />
 ## PART C — IDENTIFY ANOTHER CLOUDTRAIL EVENT
 ## Step 5: Select Another Event
@@ -66,6 +110,132 @@ may be present.
 This event is associated with Amazon S3.
 
 ## Step 6: Analyze the Second Event
-Screenshot 4: Second CloudTrail Event Details
+
+## Screenshot 4: Second CloudTrail Event Details
 <img width="1920" height="1020" alt="Screenshot 2026-09-03 161759" src="https://github.com/user-attachments/assets/3ed148f8-7df1-4336-b127-16fed2755079" />
+## PART D — COMPARE THE EVENTS
+## Step 7: Prepare the Audit Comparison
+<h3>Compare the two CloudTrail events</h3>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <tr>
+    <th>Parameter</th>
+    <th>Event 1</th>
+    <th>Event 2</th>
+  </tr>
+
+  <tr>
+    <td>Event Time</td>
+    <td>August 05, 2026, 11:09:16 (UTC+05:30)</td>
+    <td>September 02, 2026, 10:36:11 (UTC+05:30)</td>
+  </tr>
+
+  <tr>
+    <td>User Name</td>
+    <td>root</td>
+    <td>root</td>
+  </tr>
+
+  <tr>
+    <td>Event Name</td>
+    <td>CreateKeyPair</td>
+    <td>CreateBucket</td>
+  </tr>
+
+  <tr>
+    <td>Event Source</td>
+    <td>ec2.amazonaws.com</td>
+    <td>s3.amazonaws.com</td>
+  </tr>
+
+  <tr>
+    <td>AWS Region</td>
+    <td>eu-north-1</td>
+    <td>eu-north-1</td>
+  </tr>
+
+  <tr>
+    <td>Read-only</td>
+    <td>false</td>
+    <td>false</td>
+  </tr>
+
+  <tr>
+    <td>Error Code</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+
+  <tr>
+    <td>Activity</td>
+    <td>EC2 key pair creation</td>
+    <td>S3 bucket creation</td>
+  </tr>
+</table>
+---
+
+# PART E — SECURITY AUDIT ANALYSIS
+
+
+### RESULT?
+
+Was the operation successful or did it generate an error?
+
+---
+
+
+## Step 8: Prepare the Final Audit Table
+
+The final audit table summarizes the important details of both CloudTrail events:
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <tr>
+    <th>Event Time</th>
+    <th>User</th>
+    <th>Event Name</th>
+    <th>Service</th>
+    <th>Region</th>
+    <th>Read-only</th>
+    <th>Result</th>
+    <th>Activity</th>
+  </tr>
+
+  <tr>
+    <td>August 05, 2026, 11:09:16 (UTC+05:30)</td>
+    <td>root</td>
+    <td>CreateKeyPair</td>
+    <td>Amazon EC2</td>
+    <td>eu-north-1</td>
+    <td>false</td>
+    <td>Successful</td>
+    <td>EC2 key pair creation</td>
+  </tr>
+
+  <tr>
+    <td>September 02, 2026, 10:36:11 (UTC+05:30) </td>
+    <td>root</td>
+    <td>CreateBucket</td>
+    <td>Amazon S3</td>
+    <td>eu-north-1</td>
+    <td>false</td>
+    <td>Successful</td>
+    <td>S3 bucket creation</td>
+  </tr>
+</table>
+
+# RESULT
+
+The cloud activities in AWS were successfully audited using **AWS CloudTrail Event History**.
+
+Different AWS events were examined based on:
+
+- Event time
+- User identity
+- Event name
+- Event source
+- AWS Region
+- Read-only status
+- Error status
+
+The experiment demonstrated how **AWS CloudTrail** provides an audit trail for monitoring, accountability, and investigation of cloud activities.
 
